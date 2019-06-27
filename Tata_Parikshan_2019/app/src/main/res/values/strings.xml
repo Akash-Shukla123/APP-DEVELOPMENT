@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">Tata Parikshan</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="login_prefernces">com.myapp.tata_parikshan_2019_login_prefernces</string>
+    <string name="login_status_prefernces">com.myapp.tata_parikshan_2019_login_status_prefernces</string>
+
+    <string-array name="names">
+        <item>ADHAAR Card</item>
+        <item>Voter ID</item>
+        <item>PAN Card</item>
+        <item>PIO Card</item>
+    </string-array>
+
+    <string-array name="vechileNames">
+        <item>Truck</item>
+        <item>Concrete transport truck (cement mixer)</item>
+        <item>Mobile crane</item>
+        <item>Dump truck</item>
+        <item>Garbage truck</item>
+        <item>Log carrier</item>
+        <item>Refrigerator truck</item>
+        <item>Tractor unit</item>
+        <item>Tank truck</item>
+    </string-array>
+
+
+    <string-array name="materialNames">
+        <item>Mild Steel Sheets</item>
+        <item>Tata Structure Steel Products</item>
+        <item>Square Tubes</item>
+        <item>Rectangular Tubes</item>
+        <item>TATA Square Pipes</item>
+        <item>Stainless Steel Plates</item>
+        <item>Structural Steel</item>
+        <item>Tata Shaktee Galvanized Sheet</item>
+        <item>TATA BlueScope Durashine Color Roofing Sheets</item>
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="pref_general">General Settings</string>
+    <string name="pref_database">Database Settings</string>
+    <string name="pref_account">Account Settings</string>
+    <string name="pref_report">Delivery Report</string>
+    <string name="pref_summary_report">Details of all database and account information</string>
+
+    <string name="pref_username">Set Username</string>
+    <string name="pref_password">Set Password</string>
+
+    <string name="pref_name">Account Name</string>
+    <string name="pref_email">Account Email</string>
+
+    <string name="pref_transporter">Transporters Details</string>
+    <string name="pref_vechile">Vechiles Details</string>
+    <string name="pref_trip">Trip details</string>
+    <string name="pref_scan">Scan Results</string>
+
+</resources>

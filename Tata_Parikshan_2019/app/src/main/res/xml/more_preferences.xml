@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory>
+
+        <Preference
+            android:key="app_version"
+            android:title="App Version"
+            android:summary="1.0"/>
+
+        <Preference
+            android:key="about"
+            android:title="About Us"
+            android:summary="Get our details"/>
+
+        <EditTextPreference
+            android:inputType="textMultiLine"
+            android:key="feedback"
+            android:title="Send feedback"
+            android:summary="Report Techincal Issues or suggest new features"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

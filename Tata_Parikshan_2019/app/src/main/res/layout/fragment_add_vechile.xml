@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linearlay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gradstart"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circle"
+                        android:padding="13dp"
+                        android:src="@drawable/vechile" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Vechile"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/linearlay1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    android:rotation="45"
+                    android:src="@drawable/square1" />
+
+
+                <RelativeLayout
+                    android:id="@+id/relativelay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/img1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/vechileNo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstart"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_confirmation_number" />
+
+
+                    <EditText
+                        android:id="@+id/add_vechile_no"
+                        android:layout_width="match_parent"
+                        android:maxLength="9"
+                        android:inputType="textCapCharacters"
+                        android:textAllCaps="true"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/vechileNo"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/vechileNo"
+                        android:background="@color/transparent"
+                        android:hint="Vechile No."
+                        android:paddingLeft="20dp"
+                        android:textSize="15sp" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/relativelay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/relativelay1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/vechileType"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstart"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_local_shipping_black" />
+
+
+                    <Spinner
+                        android:id="@+id/add_vechile_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/vechileType"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/vechileType"
+                        android:background="@color/transparent"
+                        android:paddingLeft="20dp"
+                        android:spinnerMode="dialog"
+                        android:textSize="15sp" />
+
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/vechileSave"
+                    android:layout_below="@+id/relativelay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="35dp"
+                    android:background="@color/gradstart"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Save"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

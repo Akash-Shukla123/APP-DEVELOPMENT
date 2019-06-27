@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/pref_general">
+
+
+            <EditTextPreference
+                android:key="name"
+                app:useSimpleSummaryProvider="true"
+                android:title="@string/pref_name"/>
+
+            <EditTextPreference
+                app:useSimpleSummaryProvider="true"
+                android:inputType="textEmailAddress"
+                android:key="email"
+                android:title="@string/pref_email"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_database">
+
+        <Preference
+            android:key="delete_Transporter"
+            android:title="@string/pref_transporter"
+            android:summary="clear all data of transporters" />
+
+        <Preference
+            android:key="delete_vechile"
+            android:title="@string/pref_vechile"
+            android:summary="clear all data of vechile" />
+
+        <Preference
+            android:key="delete_trip"
+            android:title="@string/pref_trip"
+            android:summary="clear all data of trip details"/>
+
+        <Preference
+            android:key="delete_scan"
+            android:title="@string/pref_scan"
+            android:summary="clear all data of scan results"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Other Settings">
+
+        <SwitchPreference
+            android:key="notification"
+            android:title="Enable Message Notifications"/>
+
+        <CheckBoxPreference
+            android:title="@string/pref_report"
+            android:summary="@string/pref_summary_report"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

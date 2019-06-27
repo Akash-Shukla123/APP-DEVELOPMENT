@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/linearlay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gradstop"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:padding="10dp"
+                        android:background="@drawable/circle"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/professions_driver"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginTop="10dp"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:text="TRANSPORTERS"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_marginTop="-10dp"
+                    android:rotation="45"
+                    android:layout_below="@+id/linearlay1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/square"
+                    android:layout_centerHorizontal="true"/>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/relativelay1"
+                    android:layout_below="@+id/img1"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgname"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_person_black"/>
+
+
+                    <EditText
+                        android:id="@+id/add_name"
+                        android:paddingLeft="20dp"
+                        android:inputType="text"
+                        android:textSize="15sp"
+                        android:hint="Full Name"
+                        android:layout_toRightOf="@+id/imgname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgname"
+                        android:layout_alignParentTop="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/relativelay1"
+                    android:id="@+id/relativelay2"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgphone"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_phone_black_24dp"/>
+
+
+                    <EditText
+                        android:id="@+id/add_phone"
+                        android:maxLength="10"
+                        android:paddingLeft="20dp"
+                        android:textSize="15sp"
+                        android:ems="10"
+                        android:hint="91+"
+                        android:inputType="phone"
+                        android:layout_toRightOf="@+id/imgphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgphone"
+                        android:layout_alignParentTop="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/relativelay2"
+                    android:id="@+id/relativelay3"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgidproof"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_perm_identity_black"/>
+
+
+                    <Spinner
+                        android:id="@+id/add_id_proof_type"
+                        android:paddingLeft="20dp"
+                        android:textSize="15sp"
+                        android:inputType="phone"
+                        android:layout_toRightOf="@+id/imgidproof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgidproof"
+                        android:layout_alignParentTop="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/relativelay3"
+                    android:id="@+id/relativelay4"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgidproofNo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_assignment_ind_black"/>
+
+
+                    <EditText
+                        android:ems="10"
+                        android:id="@+id/add_id_proof_no"
+                        android:paddingLeft="20dp"
+                        android:textAllCaps="true"
+                        app:errorEnabled="true"
+                        android:textSize="15sp"
+                        android:hint="ID Proof No."
+                        android:layout_toRightOf="@+id/imgidproofNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgidproofNo"
+                        android:layout_alignParentTop="true" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/relativelay4"
+                    android:id="@+id/relativelay5"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgdrivinglicence"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_drive"/>
+
+
+                    <EditText
+                        android:id="@+id/add_driving_licence"
+                        android:paddingLeft="20dp"
+                        android:textSize="15sp"
+                        android:ems="6"
+                        android:textAllCaps="true"
+                        android:maxLength="16"
+                        android:hint="Driving Licence Number"
+                        android:inputType="textCapCharacters"
+                        android:layout_toRightOf="@+id/imgdrivinglicence"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgdrivinglicence"
+                        android:layout_alignParentTop="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/relativelay5"
+                    android:id="@+id/relativelay6"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgpostalcode"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_place_black"/>
+
+
+                    <EditText
+                        android:id="@+id/add_postal_code"
+                        android:paddingLeft="20dp"
+                        android:textSize="15sp"
+                        android:ems="6"
+                        android:maxLength="6"
+                        android:hint="Postal Code"
+                        android:inputType="number"
+                        android:layout_toRightOf="@+id/imgpostalcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgpostalcode"
+                        android:layout_alignParentTop="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/relativelay6"
+                    android:id="@+id/relativelay7"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgaddress"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/gradstop"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_add_location"/>
+
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/add_address"
+                        android:paddingLeft="20dp"
+                        android:hint="Permanent Address"
+                        android:textSize="15sp"
+                        android:layout_toRightOf="@+id/imgaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_alignBottom="@+id/imgaddress"
+                        android:layout_alignParentTop="true"/>
+
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/saveTransporter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relativelay7"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/gradstop"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Save"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
