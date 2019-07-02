@@ -117,13 +117,49 @@ public class AddVechile extends Fragment {
 
 
                     if (passedID != null && signal == "ok") {
-                        VechileTable vechileTableUpd = new VechileTable();
-                        vechileTableUpd.setVechile_id(passedID);
-                        vechileTableUpd.setVechile_no(vechileNo.getText().toString());
-                        vechileTableUpd.setVechile_type(vechileType.getSelectedItem().toString());
 
-                        MainActivity.tataParikshanDatabase.myDao().updateVechile(vechileTableUpd);
-                        new vechileDialog().show(getFragmentManager(), "vechiledialog");
+                        String checker = "";
+                        List<VechileTable> vechileTableList = MainActivity.tataParikshanDatabase.myDao().findByVechID(passedID);
+                        for (VechileTable vechileTable : vechileTableList){
+                            if (vechileTable.getVechile_no().equals(vechileNo.getText().toString())){
+                              checker = "false";
+                            }
+                        }
+
+                        if (checker != "false") {
+                            VechileTable vechileTableUpd = new VechileTable();
+                            vechileTableUpd.setVechile_id(passedID);
+                            vechileTableUpd.setVechile_no(vechileNo.getText().toString());
+                            vechileTableUpd.setVechile_type(vechileType.getSelectedItem().toString());
+
+                            TripTable trips = new TripTable();
+                            List<TripTable> tripTables = MainActivity.tataParikshanDatabase.myDao().findByTripVechile(passedID);
+                            for (TripTable table : tripTables) {
+
+                                trips.setId(table.getId());
+                                trips.setImage(table.getImage());
+                                trips.setGrossWeight(table.getGrossWeight());
+                                trips.setEndDateTime(table.getEndDateTime());
+                                trips.setLoading_area(table.getLoading_area());
+                                trips.setMaterial_description(table.getMaterial_description());
+                                trips.setMaterial_type(table.getMaterial_type());
+                                trips.setDestination(table.getDestination());
+                                trips.setTransporterId(table.getTransporterId());
+                                trips.setTrip_no(table.getTrip_no());
+                                trips.setFlag(table.getFlag());
+                                trips.setStartDateTime(table.getStartDateTime());
+                                trips.setStatus(table.getStatus());
+                                trips.setTareWeight(table.getTareWeight());
+                                trips.setVechile_Id(passedID);
+
+                                MainActivity.tataParikshanDatabase.myDao().updateTrip(trips);
+                            }
+
+
+                            MainActivity.tataParikshanDatabase.myDao().updateVechile(vechileTableUpd);
+                            new vechileDialog().show(getFragmentManager(), "vechiledialog");
+                        }
+
                     } else {
 
                         List<VechileTable> vechileTables2 = MainActivity.tataParikshanDatabase.myDao().getVechile();

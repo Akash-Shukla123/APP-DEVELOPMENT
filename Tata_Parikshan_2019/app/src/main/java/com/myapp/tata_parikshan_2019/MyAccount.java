@@ -102,8 +102,8 @@ public class MyAccount extends Fragment {
 
     public void Read(View view){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String name = preferences.getString("name","ADMIN");
-        String settings_email = preferences.getString("email","admin@gmail.com");
+        String name = preferences.getString("name","set your name");
+        String settings_email = preferences.getString("email","Set Email Id");
 
         if (name!=null){
             title = view.findViewById(R.id.acc_title);

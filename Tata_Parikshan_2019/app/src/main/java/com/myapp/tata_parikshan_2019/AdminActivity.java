@@ -55,7 +55,9 @@ public class AdminActivity extends AppCompatActivity
             @SuppressLint("WrongConstant")
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(),ScannerActivity.class));
+                Intent intent = new Intent(getBaseContext(),ScannerActivity.class);
+                intent.putExtra("checkerPage","1");
+                startActivity(intent);
             }
         });
 
@@ -144,6 +146,11 @@ public class AdminActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_transporter){
             fragmentManager.beginTransaction().replace(R.id.admin_fragment,new TransporterRecyclerView(),"transporterRecycler").
+                    addToBackStack("dminHomeFragment").commit();
+        }
+
+        else if (id == R.id.nav_trip_report){
+            fragmentManager.beginTransaction().replace(R.id.admin_fragment,new fragment_trip_report(),"transporterRecycler").
                     addToBackStack("dminHomeFragment").commit();
         }
 

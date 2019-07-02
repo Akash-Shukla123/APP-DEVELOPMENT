@@ -43,4 +43,6 @@ dependencies {
     def Lifecycle_version = "1.1.1"
     implementation "android.arch.lifecycle:extensions:$Lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$Lifecycle_version"
+
+    implementation 'com.github.GoodieBag:Pinview:v1.3'
 }

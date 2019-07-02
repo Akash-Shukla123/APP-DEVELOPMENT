@@ -7,6 +7,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.RoomWarnings;
 import androidx.room.Update;
 
 import java.util.List;
@@ -45,6 +46,23 @@ public interface MyDao {
     public abstract List<VechileTable> findByVechID(String vId);
     @Query("SELECT * FROM trip_details ORDER BY TripId DESC LIMIT 1")
     List<TripTable> getLastTripNo();
+    @Query("SELECT * FROM vechile_details WHERE vechile_no IN(:vechNo)")
+    public abstract List<VechileTable> findByVechNo(String vechNo);
+
+
+    @Query("SELECT * FROM transporters WHERE transporter_name IN(:tname)")
+    public abstract List<TransporterTable> findByTransporterName(String tname);
+    @Query("SELECT * FROM vechile_details WHERE vechile_type IN(:vtype)")
+    public abstract List<VechileTable> findByVechileType(String vtype);
+
+    @Query("SELECT * FROM trip_details WHERE TransporterId IN(:transid) and vechile_Id IN (:vechid)")
+    public abstract List<TripTable> findByTripDetails(String transid,String vechid);
+
+    @Query("SELECT * FROM trip_details WHERE vechile_Id IN (:vech)")
+    public abstract List<TripTable> findByTripVechile(String vech);
+
+    @Query("SELECT * FROM trip_details WHERE TransporterId IN(:transporterid)")
+    public abstract List<TripTable> findByTripTransporter(String transporterid);
 
     @Update
     public void updateAdmin(AdminTable adminTable);

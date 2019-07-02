@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/rep_swipeRefresh"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trip_report_recycler"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="217dp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="3dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/tripSave"
+                app:layout_constraintEnd_toStartOf="@+id/relativelay2"
+                app:layout_constraintStart_toEndOf="@+id/relativelay4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:visibility="invisible" />
+
+            <RelativeLayout
+                android:id="@+id/relativelay1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/divider5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgtriptransporter"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/zxing_custom_possible_result_points"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_person_black" />
+
+
+                <AutoCompleteTextView
+                    android:completionThreshold="1"
+                    android:id="@+id/Rep_transporter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imgtriptransporter"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imgtriptransporter"
+                    android:background="@color/transparent"
+                    android:hint="TR Name"
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativelay2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_toEndOf="@+id/relativelay1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider5"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgtipevech"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/zxing_custom_possible_result_points"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_local_shipping_black" />
+
+
+                <Spinner
+                    android:id="@+id/rep_vechile_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imgtipevech"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imgtipevech"
+                    android:background="@color/transparent"
+                    android:entries="@array/vechileNames"
+                    android:hint="Vechile Type"
+                    android:paddingLeft="20dp"
+                    android:spinnerMode="dropdown"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativelay4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativelay2"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/divider5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativelay1">
+
+                <ImageView
+                    android:id="@+id/imgdestination"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/zxing_custom_possible_result_points"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_time" />
+
+
+                <Button
+                    android:id="@+id/rep_dateTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imgdestination"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imgdestination"
+                    android:background="@color/transparent"
+                    android:hint="Date and Time"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/rep_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativelay5"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/zxing_custom_possible_result_points"
+                android:fontFamily="sans-serif-medium"
+                android:text="Submit"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativelay4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

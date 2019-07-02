@@ -17,7 +17,7 @@ import android.view.ViewGroup;
  */
 public class AdminHomeFragment extends Fragment {
 
-    private CardView cardTrip,cardTransporter,cardVechile;
+    private CardView cardTransporter,cardVechile;
     public AdminHomeFragment() {
         // Required empty public constructor
     }
@@ -29,7 +29,7 @@ public class AdminHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_admin_home, container, false);
 
-        cardTrip = view.findViewById(R.id.add_trip);
+        /*cardTrip = view.findViewById(R.id.add_trip);
         cardTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +37,7 @@ public class AdminHomeFragment extends Fragment {
                AdminActivity.fragmentManager.beginTransaction().replace(R.id.admin_fragment,
                  new AddTrip(),"AddTrip").addToBackStack(null).commit();
             }
-        });
+        });*/
 
         cardTransporter = view.findViewById(R.id.add_transporter);
         cardTransporter.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +48,8 @@ public class AdminHomeFragment extends Fragment {
             }
         });
 
-        cardTransporter = view.findViewById(R.id.add_vechile);
-        cardTransporter.setOnClickListener(new View.OnClickListener() {
+        cardVechile = view.findViewById(R.id.add_vechile);
+        cardVechile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AdminActivity.fragmentManager.beginTransaction().replace(R.id.admin_fragment,

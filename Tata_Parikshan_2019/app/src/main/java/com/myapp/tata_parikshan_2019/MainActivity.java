@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
             Pattern.compile("^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$");
     private SharedPrefernceConfig sharedPrefernceConfig;
     private EditText Username,Password;
-    private Button loginBtn;
+    private Button loginBtn,LoginSupervisior;
     public static TataParikshanDatabase tataParikshanDatabase;
+    private long backpressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         relay1 = findViewById(R.id.rellay1);
         relay2= findViewById(R.id.rellay2);
-        handler.postDelayed(runnable,2000);
+        handler.postDelayed(runnable,1000);
         Username = findViewById(R.id.admin_username);
         Password = findViewById(R.id.admin_password);
 
@@ -96,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        LoginSupervisior = findViewById(R.id.LoginSupervisior);
+        LoginSupervisior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),supervisior_key_login.class));
+            }
+        });
+
     }
 
     private Boolean UsernameChecker(){
@@ -133,15 +143,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        //menuInflater.inflate(R.menu.toolbar_menu,menu);
-
-        return true;
+    public void onBackPressed() {
+        if (backpressedTime + 4000 > System.currentTimeMillis()){
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backToast = Toast.makeText(getApplicationContext(),"Press back again to exit",Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backpressedTime = System.currentTimeMillis();
     }
-
-
 }

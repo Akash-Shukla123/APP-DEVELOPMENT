@@ -38,7 +38,7 @@
         <RelativeLayout
             android:id="@+id/rellay1"
             android:layout_marginBottom="40dp"
-            android:visibility=""
+            android:visibility="gone"
             android:layout_below="@+id/img_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -59,7 +59,7 @@
                         android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Username"
+                        android:text="Username (Admin)"
                         android:textAllCaps="true"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
@@ -92,7 +92,7 @@
                         android:id="@+id/password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Password"
+                        android:text="Password (Admin)"
                         android:textAllCaps="true"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@+id/line1"
-                android:text="Login"
+                android:text="Login As Admin"
                 android:textColor="@color/colorPrimary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="70dp"
@@ -142,6 +142,24 @@
                 android:textAllCaps="false"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"/>
+
+            <Button
+                android:id="@+id/LoginSupervisior"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/LoginBtn"
+                android:text="Login As Supervisior"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:background="@drawable/btn_bg"
+                android:textAllCaps="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
 
         </RelativeLayout>
 

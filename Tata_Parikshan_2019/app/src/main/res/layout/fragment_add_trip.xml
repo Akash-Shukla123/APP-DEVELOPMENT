@@ -152,7 +152,7 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
+             <!--   <RelativeLayout
                     android:layout_below="@+id/relativelay2"
                     android:id="@+id/relativelay3"
                     android:layout_width="match_parent"
@@ -184,10 +184,10 @@
                         android:textSize="15sp" />
 
 
-                </RelativeLayout>
+                </RelativeLayout>-->
 
                 <RelativeLayout
-                    android:layout_below="@+id/relativelay3"
+                    android:layout_below="@+id/relativelay2"
                     android:id="@+id/relativelay4"
                     android:layout_width="match_parent"
                     android:layout_marginTop="30dp"

@@ -22,11 +22,8 @@ public class TripTable {
         @ColumnInfo(name = "TransporterId")
         private String TransporterId;
 
-        @ColumnInfo(name = "vechile_no")
-        private String vechile_no;
-
-        @ColumnInfo(name = "trip_date_time")
-        private String trip_date_time;
+        @ColumnInfo(name = "vechile_Id")
+        private String vechile_Id;
 
         @ColumnInfo(name = "destination")
         private String destination;
@@ -43,6 +40,29 @@ public class TripTable {
         @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
         private byte[] image;
 
+        @ColumnInfo(name = "StartDateTime")
+        private String StartDateTime;
+
+        @ColumnInfo(name = "EndDateTime")
+        private String EndDateTime;
+
+        @ColumnInfo(name = "TareWeight")
+        private String TareWeight;
+
+        @ColumnInfo(name = "GrossWeight")
+        private String GrossWeight;
+
+        @ColumnInfo(name = "status")
+        private String Status;
+
+        @ColumnInfo(name = "Flag")
+        private int flag;
+
+
+
+
+
+
         public String getTrip_no() {
                 return trip_no;
         }
@@ -51,20 +71,12 @@ public class TripTable {
                 this.trip_no = trip_no;
         }
 
-        public String getVechile_no() {
-                return vechile_no;
+        public String getVechile_Id() {
+                return vechile_Id;
         }
 
-        public void setVechile_no(String vechile_no) {
-                this.vechile_no = vechile_no;
-        }
-
-        public String getTrip_date_time() {
-                return trip_date_time;
-        }
-
-        public void setTrip_date_time(String trip_date_time) {
-                this.trip_date_time = trip_date_time;
+        public void setVechile_Id(String vechile_Id) {
+                this.vechile_Id = vechile_Id;
         }
 
         public String getMaterial_type() {
@@ -121,5 +133,53 @@ public class TripTable {
 
         public void setId(int id) {
                 this.id = id;
+        }
+
+        public String getTareWeight() {
+                return TareWeight;
+        }
+
+        public void setTareWeight(String tareWeight) {
+                TareWeight = tareWeight;
+        }
+
+        public String getGrossWeight() {
+                return GrossWeight;
+        }
+
+        public void setGrossWeight(String grossWeight) {
+                GrossWeight = grossWeight;
+        }
+
+        public String getStatus() {
+                return Status;
+        }
+
+        public void setStatus(String status) {
+                Status = status;
+        }
+
+        public int getFlag() {
+                return flag;
+        }
+
+        public void setFlag(int flag) {
+                this.flag = flag;
+        }
+
+        public String getEndDateTime() {
+                return EndDateTime;
+        }
+
+        public void setEndDateTime(String endDateTime) {
+                EndDateTime = endDateTime;
+        }
+
+        public String getStartDateTime() {
+                return StartDateTime;
+        }
+
+        public void setStartDateTime(String startDateTime) {
+                StartDateTime = startDateTime;
         }
 }

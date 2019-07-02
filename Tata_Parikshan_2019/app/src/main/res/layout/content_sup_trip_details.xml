@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_supervisior_trip_details">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="3dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textAlignment="center"
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/TripStatus"
+                            android:paddingLeft="20dp"
+                            android:inputType="textCapCharacters"
+                            android:textSize="18sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:layout_alignParentTop="true"/>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay1"
+                            android:layout_below="@+id/TripStatus"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtriptransporter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Name"/>
+
+
+                            <TextView
+                                android:id="@+id/TripTransporter"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtriptransporter"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtriptransporter"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay2"
+                            android:layout_below="@+id/relativelay1"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgvech"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Vechile No."/>
+
+
+                            <TextView
+                                android:id="@+id/TripVechileNo"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgvech"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgvech"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay3"
+                            android:layout_below="@+id/relativelay2"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgVechType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Vechile Type"/>
+
+
+                            <TextView
+                                android:id="@+id/TripVechType"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgVechType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgVechType"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay4"
+                            android:layout_below="@+id/relativelay3"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtripDR"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="DR No."/>
+
+
+                            <TextView
+                                android:id="@+id/TripDR"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtripDR"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtripDR"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay5"
+                            android:layout_below="@+id/relativelay4"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtareWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Tare Wt."/>
+
+
+                            <TextView
+                                android:id="@+id/TripTareWt"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtareWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtareWeight"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay6"
+                            android:layout_below="@+id/relativelay5"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtripGross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Gross Wt."/>
+
+
+                            <TextView
+                                android:id="@+id/TripGross"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtripGross"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtripGross"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay7"
+                            android:layout_below="@+id/relativelay6"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtripmaterial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Material"/>
+
+
+                            <TextView
+                                android:id="@+id/TripMaterial"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtripmaterial"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtripmaterial"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay8"
+                            android:layout_below="@+id/relativelay7"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtripLoading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Loading Area"/>
+
+
+                            <TextView
+                                android:id="@+id/TripLoading"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtripLoading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtripLoading"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativelay9"
+                            android:layout_below="@+id/relativelay8"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginBottom="30dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/imgtripDest"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@color/grey"
+                                android:padding="8dp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="Destination"/>
+
+
+                            <TextView
+                                android:id="@+id/TripDest"
+                                android:paddingLeft="20dp"
+                                android:inputType="textCapCharacters"
+                                android:textSize="15sp"
+                                android:layout_toRightOf="@+id/imgtripDest"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:layout_alignBottom="@+id/imgtripDest"
+                                android:layout_alignParentTop="true"/>
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

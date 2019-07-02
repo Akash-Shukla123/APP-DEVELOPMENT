@@ -23,16 +23,14 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class DateTimePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener ,
-        TimePickerDialog.OnTimeSetListener {
+public class DateTimePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener{
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(String info, String infodb);
     }
 
     int day,month,year,hour,minute;
-    int day_x,month_x,year_x,hour_x,minute_x;
+    String day_x,month_x,year_x;
     String infoData1,infoData2;
     private OnFragmentInteractionListener mListener;
 
@@ -44,34 +42,30 @@ public class DateTimePicker extends DialogFragment implements DatePickerDialog.O
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        year_x = i;
-        month_x = i1+1;
-        day_x = i2;
-        Calendar calendar = Calendar.getInstance();
-        hour = calendar.get(Calendar.HOUR);
-        minute = calendar.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),this,
-                hour,minute,true);
-        timePickerDialog.show();
-    }
+        year_x = Integer.toString(i);
+        month_x = Integer.toString(i1+1);
+        day_x = Integer.toString(i2);
 
-    @Override
-    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+        if(Integer.parseInt(month_x) < 10){
 
-        hour_x = i;
-        minute_x=i1;
-        infoData1 ="Date::"+year_x+"/"+month_x+"/"+day_x+"\t Time::"+hour_x+"\t"+minute_x;
-        infoData2 = ""+year_x+month_x+day_x+hour_x+minute_x;
-
-
-        mListener.onFragmentInteraction(infoData1,infoData2);
-
+            month_x = "0" + month_x;
         }
+        if(Integer.parseInt(day_x) < 10){
+
+            day_x  = "0" + day_x ;
+        }
+        infoData1 = "" + day_x + "/" + month_x + "/" + year_x;
+        infoData2 = "" + year_x + month_x + day_x;
+
+        mListener.onFragmentInteraction(infoData1, infoData2);
+
+    }
 
     @Override
     public void onAttach(Context context) {

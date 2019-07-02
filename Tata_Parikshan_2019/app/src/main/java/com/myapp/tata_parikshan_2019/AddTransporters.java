@@ -239,11 +239,35 @@ public class AddTransporters extends Fragment {
                                 transporterTableupd.setTransporter_postalcode(postal);
                                 transporterTableupd.setTransporter_address(address);
 
+
+                            TripTable trips = new TripTable();
+                            List<TripTable> tripTables = MainActivity.tataParikshanDatabase.myDao().findByTripTransporter(transporterPassID);
+                            for (TripTable table : tripTables){
+
+                                trips.setId(table.getId());
+                                trips.setImage(table.getImage());
+                                trips.setGrossWeight(table.getGrossWeight());
+                                trips.setEndDateTime(table.getEndDateTime());
+                                trips.setLoading_area(table.getLoading_area());
+                                trips.setMaterial_description(table.getMaterial_description());
+                                trips.setMaterial_type(table.getMaterial_type());
+                                trips.setDestination(table.getDestination());
+                                trips.setTransporterId(transporterPassID);
+                                trips.setTrip_no(table.getTrip_no());
+                                trips.setFlag(table.getFlag());
+                                trips.setStartDateTime(table.getStartDateTime());
+                                trips.setStatus(table.getStatus());
+                                trips.setTareWeight(table.getTareWeight());
+                                trips.setVechile_Id(table.getVechile_Id());
+
+                                MainActivity.tataParikshanDatabase.myDao().updateTrip(trips);
+                            }
+
                                 vechileDialog vechileDialog = new vechileDialog();
                                 vechileDialog.show(getFragmentManager(), "transporterDialog");
 
                                 MainActivity.tataParikshanDatabase.myDao().updateTransporter(transporterTableupd);
-
+                                signal = "no";
                         }
                         if (signal == "ok"){
 

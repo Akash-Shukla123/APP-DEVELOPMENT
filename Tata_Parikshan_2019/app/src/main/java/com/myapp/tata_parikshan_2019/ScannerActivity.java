@@ -15,6 +15,10 @@ import android.net.UrlQuerySanitizer;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -62,8 +66,6 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
                 total.setTotal_scan(++b);
 
                 MainActivity.tataParikshanDatabase.myDao().updateTotalResults(total);
-
-                Toast.makeText(ScannerActivity.this,"Permission is granted",Toast.LENGTH_LONG).show();
             }
 
             else{
@@ -71,6 +73,14 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
                 totalResults.setTotal_scan(1);
                 MainActivity.tataParikshanDatabase.myDao().addTotal(totalResults);
 
+                ScannerTable scanner3 = new ScannerTable();
+                scanner3.setSid("SCAN"+0);
+                scanner3.setResults_Count(0);
+                scanner3.setResults("0");
+                scanner3.setDate("0");
+                scanner3.setTime("0");
+
+                MainActivity.tataParikshanDatabase.myDao().addScanner(scanner3);
 
                 requestPermission();
             }
@@ -161,47 +171,96 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     public void handleResult(final Result result) {
 
         final String scanResult = result.getText();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result:");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                scannerView.resumeCameraPreview(ScannerActivity.this);
+        Intent newintent = getIntent();
+
+        List<TripTable> tripTables = MainActivity.tataParikshanDatabase.myDao().getTrip();
+        for (TripTable trip: tripTables){
+
+            if (result.getText().toString().equals(trip.getTrip_no())){
+
+                if (trip.getTareWeight().equals("0") && trip.getFlag() == 0){
+
+                Bundle bundle = new Bundle();
+                WeightDialog weightDialog = new WeightDialog();
+                bundle.putString("tripNo",result.getText().toString());
+                bundle.putString("message","Update Tare Wt.");
+                bundle.putString("checkPage",newintent.getStringExtra("checkerPage").toString());
+                weightDialog.setArguments(bundle);
+                weightDialog.show(getSupportFragmentManager(),"Weight Dialog");
+
 
             }
-        });
 
-        builder.setNeutralButton("Visit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));
+                if (trip.getFlag() == 1){
+                    Intent intent = new Intent(this,Supervisior_trip_details.class);
+                    intent.putExtra("tripId",trip.getTrip_no());
+                    intent.putExtra("WeightTare",trip.getTareWeight());
+                    intent.putExtra("WeightGross","0");
+                    intent.putExtra("check",newintent.getStringExtra("checkerPage"));
+                    startActivity(intent);
+                }
+
+            if (trip.getGrossWeight().equals("0") && trip.getFlag() == 2){
+
+                Bundle bundle = new Bundle();
+                WeightDialog weightDialog = new WeightDialog();
+                bundle.putString("tripNo",result.getText().toString());
+                bundle.putString("message","Update Gross Wt.");
+                bundle.putString("checkPage",newintent.getStringExtra("checkerPage"));
+                weightDialog.setArguments(bundle);
+                weightDialog.show(getSupportFragmentManager(),"Weight Dialog");
+            }
+
+            if (trip.getFlag() == 3){
+                Intent intent = new Intent(this,Supervisior_trip_details.class);
+                intent.putExtra("tripId",trip.getTrip_no());
+                intent.putExtra("WeightTare",trip.getTareWeight());
+                intent.putExtra("WeightGross",trip.getGrossWeight());
+                intent.putExtra("check",newintent.getStringExtra("checkerPage"));
                 startActivity(intent);
             }
-        });
 
-        Date today = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String date = format.format(today);
+            if (trip.getFlag() == 4){
+                Log.i("found22","123");
+                Intent intent = new Intent(this,Supervisior_trip_details.class);
+                intent.putExtra("tripId",trip.getTrip_no());
+                intent.putExtra("WeightTare",trip.getTareWeight());
+                intent.putExtra("WeightGross",trip.getGrossWeight());
+                intent.putExtra("check",newintent.getStringExtra("checkerPage"));
+                startActivity(intent);
+            }
+
+                update(scanResult);
+
+            }
+
+        }
+
+    }
+
+    private void update(String value){
+        int scan = 0;
+        Date newDate = new Date();
+        SimpleDateFormat newformat = new SimpleDateFormat("dd/MM/yyyy");
+        String date = newformat.format(newDate);
 
         Date today1 = new Date();
         SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:a");
         String date1 = format1.format(today1);
-        int scan=RESULTS_COUNT++;
-        Date currentTime = Calendar.getInstance().getTime();
 
+            List<ScannerTable> tableList = MainActivity.tataParikshanDatabase.myDao().getScanner();
+            for (ScannerTable scn : tableList){
+                scan = scn.getResults_Count();
+            }
+            scan++;
         ScannerTable scanner3 = new ScannerTable();
-        scanner3.setSid("SCAN"+RESULTS_COUNT);
-        scanner3.setResults_Count(RESULTS_COUNT);
-        scanner3.setResults(scanResult);
+        scanner3.setSid("SCAN"+scan);
+        scanner3.setResults_Count(scan);
+        scanner3.setResults(value);
         scanner3.setDate(date);
         scanner3.setTime(date1);
 
         MainActivity.tataParikshanDatabase.myDao().addScanner(scanner3);
-
-
-        builder.setMessage(scanResult);
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 
 }

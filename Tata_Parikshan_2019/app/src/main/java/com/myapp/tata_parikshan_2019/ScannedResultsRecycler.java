@@ -53,7 +53,7 @@ public class ScannedResultsRecycler extends Fragment implements SearchView.OnQue
         int a=0,b=0;
         List<TotalResults> totalResults = MainActivity.tataParikshanDatabase.myDao().getTotal();
         for (TotalResults totalResults1 : totalResults){
-            a=totalResults1.getTotal_scan();
+            a=a+totalResults1.getTotal_scan();
         }
 
         totalTxt.setText("Total Scan : "+a);
@@ -61,8 +61,13 @@ public class ScannedResultsRecycler extends Fragment implements SearchView.OnQue
         List<ScannerTable> scannerTables = MainActivity.tataParikshanDatabase.myDao().getScanner();
         for (ScannerTable scannerTable: scannerTables){
             b= scannerTable.getResults_Count();
-            mData.add(new NewsItem(""+scannerTable.getDate()+"\n"+scannerTable.getTime(),
-                    ""+scannerTable.getResults(), ""+scannerTable.getSid(),R.mipmap.ic_desc));
+            if (b==0){
+                mData.clear();
+            }
+            else {
+                mData.add(new NewsItem("" + scannerTable.getDate() + "\n" + scannerTable.getTime(),
+                        "" + scannerTable.getResults(), "" + scannerTable.getSid(), R.mipmap.ic_desc));
+            }
         }
 
         CountTxt.setText("Results Found : " +b);

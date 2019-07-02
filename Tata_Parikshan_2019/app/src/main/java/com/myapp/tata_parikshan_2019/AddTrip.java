@@ -54,18 +54,18 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddTrip extends Fragment implements DateTimePicker.OnFragmentInteractionListener{
+public class AddTrip extends Fragment{
 
 
     private static EditText destination,materialDescription,loadingArea;
     private AutoCompleteTextView transporterId,vechileNo;
     private TextView transporterView;
     private static Spinner material_Type;
-    private static Button TripSave,dateTime;
+    private static Button TripSave;
     public static final int REQUEST_CODE = 11;
-    private String infodateTime,dateToStr,flag1,flag2,info,getBundle,signal="ok";
+    private String infodateTime,dateToStr,flag1,flag2,info,getBundle,tareGet,grossGet,signal="ok",start,end,stat;
     private DateTimePicker.OnFragmentInteractionListener mListener;
-    private int count=1,backstackcount=0,index,tripTableId;
+    private int count=1,backstackcount=0,index,tripTableId,flagGet;
     private byte[] byteArray,updArray;
 
 
@@ -105,7 +105,6 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
 
         transporterId = view.findViewById(R.id.add_TripTransporter);
         vechileNo = view.findViewById(R.id.add_Tripvechile_no);
-        dateTime = view.findViewById(R.id.add_TripDatatime);
         destination = view.findViewById(R.id.add_Destination);
         materialDescription = view.findViewById(R.id.add_material_desc);
         loadingArea = view.findViewById(R.id.add_loading_area);
@@ -156,15 +155,6 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                 android.R.layout.simple_list_item_1,VECHILES);
         vechileNo.setAdapter(arrayAdapter);
 
-            dateTime.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                DialogFragment newFragment = new DateTimePicker();
-                newFragment.show(getFragmentManager(), "DatePicker");
-                newFragment.setTargetFragment(AddTrip.this, REQUEST_CODE);
-            }
-        });
 
         Date today = new Date();
         SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMdd");
@@ -222,8 +212,12 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                 for (TripTable tp: tripTableList) {
                     tripTableId = tp.getId();
                     transporterId.setText(tp.getTransporterId());
-                    vechileNo.setText(tp.getVechile_no());
-                    dateTime.setText(tp.getTrip_date_time());
+                    String vech="";
+                    List<VechileTable> vechileTables = MainActivity.tataParikshanDatabase.myDao().findByVechID(tp.getVechile_Id());
+                    for (VechileTable vechileTable: vechileTables){
+                        vech = vechileTable.getVechile_no();
+                    }
+                    vechileNo.setText(vech);
                     destination.setText(tp.getDestination());
                     materialDescription.setText(tp.getMaterial_description());
                     loadingArea.setText(tp.getLoading_area());
@@ -235,6 +229,12 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                     }
                     material_Type.setSelection(index, true);
                     updArray = tp.getImage();
+                    flagGet = tp.getFlag();
+                    start = tp.getStartDateTime();
+                    end = tp.getEndDateTime();
+                    tareGet = tp.getTareWeight();
+                    grossGet = tp.getGrossWeight();
+                    stat = tp.getStatus();
                 }
             }
         }
@@ -247,7 +247,6 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                 String tripId = "TRIP" + count + dateToStr;
                 String tpID = transporterId.getText().toString();
                 String number = vechileNo.getText().toString();
-                String dt_time = dateTime.getText().toString();
                 String dest = destination.getText().toString();
                 String materialDesc = materialDescription.getText().toString();
                 String loadArea = loadingArea.getText().toString();
@@ -258,14 +257,10 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                     getInfo = getInfo + trp.getTransporter_name();
                 }
 
-                String allInfo = "TRIP NO. : " + tripId + "\n\n Transporter ID : " + tpID + "\n\n Transporter Name : " + getInfo +
-                        "\n\n Vechile No. : " + number + "\n\n " + dt_time + "\n\n Destination : " + dest + "\n\n Material Type : "
-                        + material + "\n\n Material Description : " + materialDesc + "\n\n Loading Area : " + loadArea;
-
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
                 BitMatrix bitMatrix = null;
                 try {
-                    bitMatrix = multiFormatWriter.encode(allInfo, BarcodeFormat.QR_CODE, 500, 500);
+                    bitMatrix = multiFormatWriter.encode(tripId, BarcodeFormat.QR_CODE, 500, 500);
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
 
@@ -278,7 +273,7 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                     e.printStackTrace();
                 }
 
-                if (TextUtils.isEmpty(tpID) || TextUtils.isEmpty(number) || TextUtils.isEmpty(dt_time) || TextUtils.isEmpty(dest) ||
+                if (TextUtils.isEmpty(tpID) || TextUtils.isEmpty(number) || TextUtils.isEmpty(dest) ||
                         TextUtils.isEmpty(materialDesc) || TextUtils.isEmpty(loadArea) || TextUtils.isEmpty(materialDesc)) {
                     Toast.makeText(getActivity(), "Please Fill all the details.", Toast.LENGTH_SHORT).show();
                     signal = "no";
@@ -299,7 +294,6 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
 
                         transporterId.setText("");
                         vechileNo.setText("");
-                        dateTime.setText("");
                         destination.setText("");
                         materialDescription.setText("");
                         loadingArea.setText("");
@@ -329,13 +323,23 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
                         tripTableupd.setId(tripTableId);
                         tripTableupd.setTrip_no(getBundle);
                         tripTableupd.setTransporterId(tpID);
-                        tripTableupd.setVechile_no(number);
-                        tripTableupd.setTrip_date_time(dt_time);
+                        String vech="";
+                        List<VechileTable> vechileTables = MainActivity.tataParikshanDatabase.myDao().findByVechNo(number);
+                        for (VechileTable vechileTable: vechileTables){
+                            vech = vechileTable.getVechile_id();
+                        }
+                        tripTableupd.setVechile_Id(vech);
                         tripTableupd.setDestination(dest);
                         tripTableupd.setMaterial_description(materialDesc);
                         tripTableupd.setLoading_area(loadArea);
                         tripTableupd.setMaterial_type(material);
                         tripTableupd.setImage(updArray);
+                        tripTableupd.setStartDateTime(start);
+                        tripTableupd.setEndDateTime(end);
+                        tripTableupd.setTareWeight(tareGet);
+                        tripTableupd.setGrossWeight(grossGet);
+                        tripTableupd.setStatus(stat);
+                        tripTableupd.setFlag(flagGet);
 
                         vechileDialog vechileDialog = new vechileDialog();
                         vechileDialog.show(getFragmentManager(), "TripUpdate");
@@ -344,29 +348,27 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
 
                     }
 
-                    if (getBundle == null) {
+                    String vechiles="";
+                    List<VechileTable> vechileTables3 = MainActivity.tataParikshanDatabase.myDao().findByVechNo(number);
+                    for (VechileTable vechileTable3: vechileTables3){
+                        vechiles = vechileTable3.getVechile_id();
+                    }
 
-                        List<TripTable> tripTables = MainActivity.tataParikshanDatabase.myDao().getTrip();
-                        for (TripTable trip : tripTables) {
+                    List<TripTable> tripTableList = MainActivity.tataParikshanDatabase.myDao().findByTripDetails(tpID,vechiles);
+                    for (TripTable tpTb: tripTableList){
+                        if (tpTb.getFlag() != 4){
+                            signal = "no";
+                            Toast.makeText(getContext(),"Trip is not ended with this transporter and vechile",Toast.LENGTH_LONG).show();
 
-                            String trID = trip.getTransporterId();
-                            String dtTime = trip.getTrip_date_time();
-                            String vech = trip.getVechile_no();
-
-                            if (trID.equals(tpID) && dtTime.equals(dt_time)) {
-                                TripSaveDialog tripSaveDialog = new TripSaveDialog();
-                                tripSaveDialog.show(getFragmentManager(), "TripSaveDialog");
-                                flag1 = "notrunnable";
-                                signal = "no";
-                            }
-
-                            if (!trID.equals(tpID) && vech.equals(number) && !dtTime.equals(dt_time)) {
-                                TripSaveDialog tripSaveDialog = new TripSaveDialog();
-                                tripSaveDialog.show(getFragmentManager(), "tripSaveDialog");
-                                flag2 = "notrunnable";
-                                signal = "no";
-                            }
+                            transporterId.setText("");
+                            transporterView.setText("");
+                            vechileNo.setText("");
+                            destination.setText("");
+                            materialDescription.setText("");
+                            loadingArea.setText("");
+                            material_Type.setSelection(0, true);
                         }
+                    }
 
                         if (flag1 != "notrunnable" && flag2 != "notrunnable" && signal == "ok") {
 
@@ -374,19 +376,31 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
 
                             tripTable.setTrip_no(tripId);
                             tripTable.setTransporterId(tpID);
-                            tripTable.setVechile_no(number);
-                            tripTable.setTrip_date_time(dt_time);
+                            String vechId="";
+                            List<VechileTable> vechileTables2 = MainActivity.tataParikshanDatabase.myDao().findByVechNo(number);
+                            for (VechileTable vechileTable2: vechileTables2){
+                                vechId = vechileTable2.getVechile_id();
+                            }
+
+                            Log.i("found2222",""+vechId);
+
+                            tripTable.setVechile_Id(vechId);
                             tripTable.setDestination(dest);
                             tripTable.setMaterial_description(materialDesc);
                             tripTable.setLoading_area(loadArea);
                             tripTable.setMaterial_type(material);
                             tripTable.setImage(byteArray);
+                            tripTable.setStartDateTime(dateToStr);
+                            tripTable.setEndDateTime("00000000000000");
+                            tripTable.setTareWeight("0");
+                            tripTable.setGrossWeight("0");
+                            tripTable.setStatus("At Tare Position");
+                            tripTable.setFlag(0);
 
                             MainActivity.tataParikshanDatabase.myDao().addTrip(tripTable);
 
                             transporterId.setText("");
                             vechileNo.setText("");
-                            dateTime.setText("");
                             destination.setText("");
                             materialDescription.setText("");
                             loadingArea.setText("");
@@ -397,23 +411,15 @@ public class AddTrip extends Fragment implements DateTimePicker.OnFragmentIntera
 
                             QrCodeGenerator qrCodeGenerator = new QrCodeGenerator();
                             qrCodeGenerator.setArguments(args);
-                            getFragmentManager().beginTransaction().replace(R.id.admin_fragment, qrCodeGenerator)
+                            getFragmentManager().beginTransaction().replace(R.id.sup_frame_container, qrCodeGenerator)
                                     .addToBackStack(null).commit();
 
                         }
                     }
                 }
-            }
         });
 
         return view;
     }
-
-    @Override
-    public void onFragmentInteraction(String info, String infodb) {
-        dateTime.setText(info.toString());
-        infodateTime = infodb.toString();
-    }
-
 
 }
