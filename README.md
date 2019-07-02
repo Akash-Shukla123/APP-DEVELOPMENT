@@ -4,3 +4,4 @@ Developed By Akash Kumar Shukla
 development of app to read qr code inm TATA PARIKSHAN internship
 
 go to code - APP-DEVELOPMENT/Tata_Parikshan_2019/app/src/main/java/com/myapp/tata_parikshan_2019/
+got to layouts and more - APP-DEVELOPMENT/Tata_Parikshan_2019/app/src/main/res/
